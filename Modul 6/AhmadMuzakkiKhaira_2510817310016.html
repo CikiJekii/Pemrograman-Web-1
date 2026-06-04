@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ciki Jeki</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+    body { padding: 20px 40px; color: #222; }
+    
+    header { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; }
+    .brand { font-weight: 700; font-size: 22px; letter-spacing: -0.5px; }
+    nav a { text-transform: uppercase; font-size: 11px; font-weight: 500; color: #555; text-decoration: none; padding: 8px 16px; margin-left: 5px; cursor: pointer; transition: 0.3s; }
+    nav a.active { border: 1px solid #e5e5e5; border-radius: 4px; color: #000; }
+
+    .hero { text-align: center; padding: 60px 0 30px; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: 34px; margin-bottom: 5px; }
+    .hero h2 { font-family: 'Playfair Display', serif; font-size: 22px; margin-bottom: 15px; }
+    .hero p { font-size: 10px; letter-spacing: 2px; color: #999; text-transform: uppercase; font-weight: 500; }
+
+    .tabs { display: flex; justify-content: center; margin-bottom: 40px; gap: 10px; }
+    .tabs button { background: none; border: 1px solid transparent; padding: 6px 18px; font-size: 12px; color: #888; cursor: pointer; transition: 0.3s; }
+    .tabs button.active { color: #000; border: 1px solid #ccc; border-radius: 20px; }
+    .tabs button:focus { outline: none; }
+
+    .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .gallery img { width: 100%; height: 250px; object-fit: cover; }
+
+    footer { text-align: center; padding: 60px 0 20px; margin-top: 50px; border-top: 1px solid #eee; }
+    footer h4 { font-size: 18px; font-weight: 700; margin-bottom: 5px; }
+    footer p { font-size: 11px; color: #999; margin-bottom: 25px; }
+    footer .socials a { color: #666; font-size: 14px; margin: 0 10px; text-decoration: none; }
+
+    @media (max-width: 992px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 576px) { 
+      header { flex-direction: column; gap: 15px; }
+      .gallery { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="brand">CikiJeki</div>
+  <nav>
+    <a class="active" onclick="activateNav(this)">Home</a>
+    <a onclick="activateNav(this)">About Me</a>
+    <a onclick="activateNav(this)">Portfolio</a>
+    <a onclick="activateNav(this)">Contact</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <h1>Hi. Hello.. I Am Jeki...!</h1>
+  <h2>I Travel Around The World To Get The Best Photos.!</h2>
+  <p>Award Winning Photographer / Cinematographer / Writer</p>
+</div>
+
+<div class="tabs">
+  <button class="active" onclick="activateTab(this)">All</button>
+  <button onclick="activateTab(this)">Landscape</button>
+  <button onclick="activateTab(this)">Portrait</button>
+  <button onclick="activateTab(this)">Product</button>
+</div>
+
+<div class="gallery" id="gallery"></div>
+
+<footer>
+  <h4>CikiJeki</h4>
+  <p>&copy; Copyrights 2025. All Rights Reserved.</p>
+  <div class="socials">
+    <a href="#"><i class="fa-brands fa-behance"></i></a>
+    <a href="#"><i class="fa-brands fa-dribbble"></i></a>
+    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+    <a href="#"><i class="fa-brands fa-pinterest-p"></i></a>
+    <a href="#"><i class="fa-brands fa-flickr"></i></a>
+    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+  </div>
+</footer>
+
+<script>
+  const images = [
+    { src: 'https://i.pinimg.com/736x/cf/22/da/cf22daa837ed385dd61b2ba474e8d41d.jpg' },
+    { src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTreJLGhkDBa6anoxScm2fJpvY2_ghOba9zw&s' },
+    { src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrdnNg5PElO8dGqMQcH6zEG-TzSVyCWOz2bQ&s' },
+    { src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNq2L5UdvEgmYEdrnosyaCqA1XyG_aUz9Glw&s' },
+    { src: 'https://www.rukita.co/stories/wp-content/uploads/2022/04/foto-kucing-oren.jpg' },
+    { src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSccGKoVBqHNdJ2k6fE_Sy64ctssyYYuhG4rQ&s' },
+    { src: 'https://i.pinimg.com/736x/da/1a/6d/da1a6d668d52a9ebb81211152b418194.jpg' },
+    { src: 'https://cdn2.cdnstep.com/xvbLA8d3rykn9KgTgkAs/cover-1.thumb256.png' },
+    { src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS51E3qFcB2wJPQ1nJeOhk00gkTNvfcSd_Www&s' },
+    { src: 'https://i.pinimg.com/474x/ab/b4/28/abb428af4ad98cfc4f54462118e449bf.jpg' },
+    { src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRQEyPg2mSZkJcU02hRh8AhESFsmyIrB8gmQ&s' },
+    { src: 'https://i.pinimg.com/736x/2e/ed/30/2eed301af40aebd2d77cff2fa3d6eeee.jpg' },
+    { src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6Tbl3_JEIhjDBoFk-7fnv3Wf0Mr0jj0zxJQ&s' },
+    { src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLFccV0EUjCTVAQytzyp0jSZwHFI6wYiOduw&s' },
+    { src: 'https://i.pinimg.com/736x/62/8d/4f/628d4fdd108938716465e6643a0f5296.jpg' },
+    { src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzYmx_Aq-TcMRzlsqOvzbbKvWuHuO50TzxhA&s' }
+  ];
+
+  const gallery = document.getElementById('gallery');
+  gallery.innerHTML = images.map(img => `<img src="${img.src}" alt="foto">`).join('');
+
+  function activateNav(el) {
+    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  function activateTab(btn) {
+    document.querySelectorAll('.tabs button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+</script>
+
+</body>
+</html>
